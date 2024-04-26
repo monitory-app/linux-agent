@@ -1,15 +1,8 @@
 # @monitory-app/linux-agent
 
-To install dependencies:
+# Installation
 
 ```bash
-bun install
+curl -fsSL https://raw.githubusercontent.com/monitory-app/linux-agent/main/install.sh | bash -s -- --token="REPLACE_WITH_YOUR_TOKEN"
 ```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+You can find the installation script source [here](.//install.sh).

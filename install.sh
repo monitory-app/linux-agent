@@ -3,12 +3,13 @@
 # Exit in case of error
 set -e
 
-if [ -z "$1" ]; then
-   echo "Missing token parameter" # token
+token=$(echo "$@" | grep -oP -- '--token="\K[^"]+')
+
+if [ -z "$token" ]; then
+   echo "Missing token parameter"
    exit 1
 fi
 
-TOKEN=$1
 OS_TYPE=$(cat /etc/os-release | grep -w "ID" | cut -d "=" -f 2 | tr -d '"')
 
 if [ $OS_TYPE != "ubuntu" ] && [ $OS_TYPE != "debian" ]; then
@@ -34,7 +35,7 @@ mkdir -p /var/opt/monitory-agent
 cd /var/opt/monitory-agent
 git clone git@github.com:monitory-app/linux-agent.git .
 cp .env.example .env
-sed -i "s/REPLACE_WITH_YOUR_TOKEN/$TOKEN/g" .env
+sed -i "s/REPLACE_WITH_YOUR_TOKEN/$token/g" .env
 sed -i "s/development/production/g" .env
 
 echo -e "--------------------------------------------------------------------------------"
