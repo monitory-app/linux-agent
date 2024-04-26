@@ -1,0 +1,19 @@
+{
+  "name": "@monitory-app/linux-agent",
+  "module": "index.ts",
+  "type": "module",
+  "author": {
+    "email": "pascal@klesse.dev",
+    "name": "Pascal Klesse"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "1.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "systeminformation": "5.22.7"
+  }
+}
