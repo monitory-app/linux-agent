@@ -1,4 +1,4 @@
-# monitoring-agent
+# @monitory-app/linux-agent
 
 To install dependencies:
 
