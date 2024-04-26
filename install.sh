@@ -47,4 +47,9 @@ systemctl enable monitory-agent
 systemctl start monitory-agent
 
 echo -e "--------------------------------------------------------------------------------"
+echo "Create commands..."
+ln -s /var/opt/monitory-agent/install.sh /usr/local/bin/monitory_install
+ln -s /var/opt/monitory-agent/update.sh /usr/local/bin/monitory_update
+
+echo -e "--------------------------------------------------------------------------------"
 echo "Agent installed successfully!"
