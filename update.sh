@@ -7,6 +7,9 @@ echo -e "-----------------------------------------------------------------------
 echo "Pull new agent version..."
 cd /var/opt/monitory-agent
 git pull
+chmod +x install.sh
+chmod +x update.sh
+chmod +x uninstall.sh
 
 echo -e "--------------------------------------------------------------------------------"
 echo "Restart agent..."

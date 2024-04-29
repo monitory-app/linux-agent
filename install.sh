@@ -38,6 +38,11 @@ echo "Download agent..."
 mkdir -p /var/opt/monitory-agent
 cd /var/opt/monitory-agent
 git clone https://github.com/monitory-app/linux-agent.git .
+
+chmod +x install.sh
+chmod +x update.sh
+chmod +x uninstall.sh
+
 cp .env.example .env
 sed -i "s/REPLACE_WITH_YOUR_TOKEN/$token/g" .env
 sed -i "s/development/production/g" .env
@@ -52,8 +57,11 @@ systemctl start monitory-agent
 
 echo -e "--------------------------------------------------------------------------------"
 echo "Create commands..."
-ln -s /var/opt/monitory-agent/install.sh /usr/local/bin/monitory_install
-ln -s /var/opt/monitory-agent/update.sh /usr/local/bin/monitory_update
+ln -s /var/opt/monitory-agent/install.sh /usr/bin/monitory_install
+ln -s /var/opt/monitory-agent/update.sh /usr/bin/monitory_update
+ln -s /var/opt/monitory-agent/uninstall.sh /usr/bin/monitory_uninstall
 
+echo "Run monitory_update to get the latest version of the agent."
+echo "Run monitory_uninstall to uninstall the agent."
 echo -e "--------------------------------------------------------------------------------"
 echo "Agent installed successfully!"

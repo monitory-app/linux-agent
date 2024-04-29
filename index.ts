@@ -19,8 +19,8 @@ app.use("*", bearerAuth({
 }));
 
 app.get("/", async (c) => {
-    const {normalUpdates, securityUpdates} = await aptUpdates();
-    const {cpuInPercent, memoryInPercent, uptime} = await hardwareInfo();
+    const {normalUpdates, securityUpdates, duration: durationUpdates} = await aptUpdates();
+    const {cpuInPercent, memoryInPercent, uptime, duration: durationHardware} = await hardwareInfo();
 
     return c.json({
         cpuInPercent,
@@ -29,6 +29,8 @@ app.get("/", async (c) => {
         normalUpdates,
         securityUpdates,
         version: packageJson.version,
+        durationUpdates,
+        durationHardware,
     });
 });
 

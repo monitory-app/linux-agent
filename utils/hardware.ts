@@ -1,6 +1,7 @@
 import * as si from "systeminformation";
 
 export async function hardwareInfo() {
+    const startTime = Date.now();
     const cpu = await si.currentLoad();
     const time = await si.time();
     const memory = await si.mem();
@@ -11,9 +12,13 @@ export async function hardwareInfo() {
     const memoryInPercent = ((usedRam / totalRam) * 100).toFixed(2) ?? 0;
     const cpuInPercent = cpu.currentLoad.toFixed(2) ?? 0;
 
+    const duration = Date.now() - startTime;
+    console.log(`hardwareInfo took ${duration}ms`);
+
     return {
         cpuInPercent,
         memoryInPercent,
-        uptime
+        uptime,
+        duration
     };
 }
