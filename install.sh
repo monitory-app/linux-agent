@@ -3,7 +3,9 @@
 # Exit in case of error
 set -e
 
+echo "Alle Parameter: $@"
 token=$(echo "$@" | grep -oP -- '--token="\K[^"]+')
+echo "Extrahierter Token: $token"
 
 if [ -z "$token" ]; then
    echo "Missing token parameter"
