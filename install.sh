@@ -43,7 +43,7 @@ sed -i "s/development/production/g" .env
 echo -e "--------------------------------------------------------------------------------"
 echo "Install service..."
 
-cp /var/opt/monitory-agent/monitory-agent.service /etc/systemd/system/monitory-agent.service
+cp /var/opt/monitory-agent/monitoring.service /etc/systemd/system/monitoring.service
 systemctl daemon-reload
 systemctl enable monitory-agent
 systemctl start monitory-agent
