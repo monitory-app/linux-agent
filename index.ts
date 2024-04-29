@@ -1,37 +1,34 @@
-import {serve} from 'bun';
-import {aptUpdates} from "./utils/apt.ts";
-import {hardwareInfo} from "./utils/hardware.ts";
 import {Hono} from 'hono'
 import {bearerAuth} from 'hono/bearer-auth'
-import packageJson from "./package.json";
+import {pushToMonitory} from "./base";
+import {getAllMetrics} from "./metrics";
 
 const PORT = Bun.env.PORT ?? '2003';
 
-console.debug(`Server is running on http://localhost:${PORT} and ws://localhost:${PORT}`);
+console.debug(`Server is running on http://localhost:${PORT}`);
 const app = new Hono();
 const token = Bun.env.TOKEN;
+const isProduction = Bun.env.NODE_ENV === 'production';
+const intervalInSec: number = Number(Bun.env.INTERVAL_IN_SECONDS) ?? 60;
 
+if (Bun.env.MODE === 'PUSH') {
+    setInterval(async () => {
+        await pushToMonitory();
+    }, intervalInSec * 1000);
+}
+
+if (isProduction) {
 // It will validate token
-app.use("*", bearerAuth({
-    verifyToken: async (t, c) => {
-        return t === token;
-    },
-}));
+    app.use("*", bearerAuth({
+        verifyToken: async (t, c) => {
+            return t === token;
+        },
+    }));
+}
 
 app.get("/", async (c) => {
-    const {normalUpdates, securityUpdates, duration: durationUpdates} = await aptUpdates();
-    const {cpuInPercent, memoryInPercent, uptime, duration: durationHardware} = await hardwareInfo();
-
-    return c.json({
-        cpuInPercent,
-        memoryInPercent,
-        uptime,
-        normalUpdates,
-        securityUpdates,
-        version: packageJson.version,
-        durationUpdates,
-        durationHardware,
-    });
+    const result = await getAllMetrics();
+    return c.json(result);
 });
 
 export default app;

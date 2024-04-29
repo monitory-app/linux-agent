@@ -2,7 +2,7 @@ import {execSync} from "child_process";
 
 export function aptUpdates() {
     const startTime = Date.now();
-    return new Promise<{ normalUpdates: number; securityUpdates: number; duration?: number; }>((resolve, reject) => {
+    return new Promise<{apt: { normalUpdates: number; securityUpdates: number; duration?: number; }}>((resolve, reject) => {
         try {
             // Führen Sie 'apt update' aus, um die Paketliste zu aktualisieren
             execSync('apt update', {stdio: 'inherit'});
@@ -30,12 +30,10 @@ export function aptUpdates() {
             }
 
             const duration = Date.now() - startTime;
-            console.log(`aptUpdates took ${duration}ms`);
-            resolve({normalUpdates, securityUpdates, duration});
+            resolve({apt: {normalUpdates, securityUpdates, duration}});
         } catch (error) {
             const duration = Date.now() - startTime;
-            console.log(`aptUpdates took ${duration}ms`);
-            resolve({normalUpdates: 0, securityUpdates: 0, duration});
+            resolve({apt: {normalUpdates: 0, securityUpdates: 0, duration}});
         }
     });
 }

@@ -60,9 +60,11 @@ echo -e "-----------------------------------------------------------------------
 echo "Create commands..."
 ln -s /var/opt/monitory-agent/install.sh /usr/bin/monitory_install
 ln -s /var/opt/monitory-agent/update.sh /usr/bin/monitory_update
+ln -s /var/opt/monitory-agent/reconfigure.sh /usr/bin/monitory_reconfigure
 ln -s /var/opt/monitory-agent/uninstall.sh /usr/bin/monitory_uninstall
 
 echo "Run monitory_update to get the latest version of the agent."
+echo "Run monitory_reconfigure after changing the configuration file."
 echo "Run monitory_uninstall to uninstall the agent."
 echo -e "--------------------------------------------------------------------------------"
 echo "Agent installed successfully!"
