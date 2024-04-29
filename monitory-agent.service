@@ -3,9 +3,9 @@ Description=@monitory-app/linux-agent
 After=network.target
 
 [Service]
-EnvironmentFile=/var/opt/monitoring-agent/.env
+EnvironmentFile=/var/opt/monitory-agent/.env
 Type=simple
-ExecStart=bun /var/opt/monitoring-agent/index.ts
+ExecStart=bun /var/opt/monitory-agent/index.ts
 Restart=on-failure
 StandardOutput=syslog
 StandardError=syslog
