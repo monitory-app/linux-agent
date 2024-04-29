@@ -6,12 +6,11 @@ export async function pushToMonitory() {
     console.debug(`Pushing informations to monitory.app at ${new Date().toISOString()}`);
 
     try {
-        const response = await fetch("https://monitory.app/api/v1/hosts/metrics", {
+        const response = await fetch(`https://monitory.app/api/hosts/metrics/${token}`, {
             method: "POST",
             body: JSON.stringify(result),
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
             },
         });
 
