@@ -38,6 +38,7 @@ echo "Download agent..."
 mkdir -p /var/opt/monitory-agent
 cd /var/opt/monitory-agent
 git clone https://github.com/monitory-app/linux-agent.git .
+bun install
 
 chmod +x install.sh
 chmod +x update.sh
