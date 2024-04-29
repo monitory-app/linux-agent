@@ -4,7 +4,7 @@
 set -e
 
 echo "Alle Parameter: $@"
-token=$(echo "$@" | grep -oP -- '--token="\K[^"]+')
+token=$(echo "$@" | awk -F "=" '{print $2}')
 echo "Extrahierter Token: $token"
 
 if [ -z "$token" ]; then
