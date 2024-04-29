@@ -5,7 +5,7 @@ After=network.target
 [Service]
 EnvironmentFile=/var/opt/monitory-agent/.env
 Type=simple
-ExecStart=bun /var/opt/monitory-agent/index.ts
+ExecStart=/root/.bun/bin/bun /var/opt/monitory-agent/index.ts
 Restart=on-failure
 StandardOutput=syslog
 StandardError=syslog
