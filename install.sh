@@ -35,7 +35,7 @@ echo "Download agent..."
 
 mkdir -p /var/opt/monitory-agent
 cd /var/opt/monitory-agent
-git clone git@github.com:monitory-app/linux-agent.git .
+git clone https://github.com/monitory-app/linux-agent.git .
 cp .env.example .env
 sed -i "s/REPLACE_WITH_YOUR_TOKEN/$token/g" .env
 sed -i "s/development/production/g" .env
