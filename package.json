@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "hono": "4.2.8",
-    "systeminformation": "5.21.23"
+    "systeminformation": "5.21.14"
   }
 }
