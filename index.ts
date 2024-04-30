@@ -10,6 +10,7 @@ const app = new Hono();
 const token = Bun.env.TOKEN;
 const isProduction = Bun.env.NODE_ENV === 'production';
 const intervalInSec: number = Number(Bun.env.INTERVAL_IN_SECONDS) ?? 60;
+console.debug(`Interval in seconds: ${intervalInSec}`);
 
 if (Bun.env.MODE === 'PUSH') {
     setInterval(async () => {

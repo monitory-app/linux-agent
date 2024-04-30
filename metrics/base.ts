@@ -1,7 +1,7 @@
 import * as si from "systeminformation";
 
 export async function baseInfo() {
-    //const os = await si.osInfo();
+    const os = await si.osInfo();
     const cpu = await si.cpu();
     const currentLoad = await si.currentLoad();
     const time = si.time();
@@ -9,12 +9,12 @@ export async function baseInfo() {
     const uptime = Math.round(time.uptime / 60 / 60);
 
     return {
-        platform: 'os.platform',
-        distro: 'os.distro',
-        release: 'os.release',
-        codename: 'os.codename',
-        kernel: 'os.kernel',
-        arch: 'os.arch',
+        platform: os.platform,
+        distro: os.distro,
+        release: os.release,
+        codename: os.codename,
+        kernel: os.kernel,
+        arch: os.arch,
         memory: {
             used: memory.used,
             total: memory.total,
