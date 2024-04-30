@@ -5,7 +5,7 @@ set -e
 
 systemctl stop monitory-agent
 systemctl disable monitory-agent
-rm -rf monitory-agent/
+rm -rf /var/opt/monitory-agent/
 rm /etc/systemd/system/monitory-agent.service
 rm /usr/bin/monitory_install
 rm /usr/bin/monitory_update
