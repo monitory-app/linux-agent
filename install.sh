@@ -42,6 +42,7 @@ bun install
 
 chmod +x install.sh
 chmod +x update.sh
+chmod +x reconfigure.sh
 chmod +x uninstall.sh
 
 cp .env.example .env
