@@ -6,7 +6,6 @@ export async function baseInfo() {
     const currentLoad = await si.currentLoad();
     const time = si.time();
     const memory = await si.mem();
-    const uptime = Math.round(time.uptime / 60 / 60);
 
     return {
         platform: os.platform,
@@ -25,6 +24,6 @@ export async function baseInfo() {
             cores: cpu.cores,
             physicalCores: cpu.physicalCores,
         },
-        uptime,
+        uptime: time.uptime,
     }
 }
