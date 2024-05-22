@@ -28,7 +28,7 @@ echo -e "-----------------------------------------------------------------------
 echo "Installing required packages..."
 
 apt update -y >/dev/null 2>&1
-apt install -y curl wget git >/dev/null 2>&1
+apt install -y curl wget git unzip >/dev/null 2>&1
 
 curl -fsSL https://bun.sh/install | bash
 
