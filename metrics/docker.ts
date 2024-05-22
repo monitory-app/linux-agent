@@ -23,7 +23,7 @@ export async function dockerInfo() {
     return {
         docker: {
             version: docker.serverVersion,
-            containers: containerStats.map((container: any) => {
+            containersStats: containerStats.map((container: any) => {
                 return {
                     id: container?.id,
                     name: container?.name,
@@ -34,10 +34,10 @@ export async function dockerInfo() {
                     restartCount: container?.restartCount ?? 0,
                 }
             }),
-            containersCount: docker.containers,
-            containersRunningCount: docker.containersRunning,
-            containersPausedCount: docker.containersPaused,
-            containersStoppedCount: docker.containersStopped,
+            containers: docker.containers,
+            containersRunning: docker.containersRunning,
+            containersPaused: docker.containersPaused,
+            containersStopped: docker.containersStopped,
             duration,
         }
     };
