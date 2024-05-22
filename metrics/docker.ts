@@ -5,10 +5,11 @@ export async function dockerInfo() {
         return {
             docker: {
                 version: 'N/A',
-                containers: 0,
-                containersRunning: 0,
-                containersPaused: 0,
-                containersStopped: 0,
+                containers: [],
+                containersCount: 0,
+                containersRunningCount: 0,
+                containersPausedCount: 0,
+                containersStoppedCount: 0,
                 duration: 0,
             }
         };
@@ -17,14 +18,26 @@ export async function dockerInfo() {
     const startTime = Date.now();
     const docker = await si.dockerInfo();
     const duration = Date.now() - startTime;
+    const containerStats = await si.dockerAll();
 
     return {
         docker: {
             version: docker.serverVersion,
-            containers: docker.containers,
-            containersRunning: docker.containersRunning,
-            containersPaused: docker.containersPaused,
-            containersStopped: docker.containersStopped,
+            containers: containerStats.map((container: any) => {
+                return {
+                    id: container?.id,
+                    name: container?.name,
+                    memPercent: container?.memPercent ? Number(container?.memPercent.toFixed(2)) ?? 0 : 0,
+                    cpuPercent: container?.cpuPercent ? Number(container?.cpuPercent.toFixed(2)) ?? 0 : 0,
+                    state: container?.state,
+                    started: container?.started,
+                    restartCount: container?.restartCount ?? 0,
+                }
+            }),
+            containersCount: docker.containers,
+            containersRunningCount: docker.containersRunning,
+            containersPausedCount: docker.containersPaused,
+            containersStoppedCount: docker.containersStopped,
             duration,
         }
     };
