@@ -25,5 +25,6 @@ export async function baseInfo() {
             physicalCores: cpu.physicalCores,
         },
         uptime: time.uptime,
+        serverTime: time.current,
     }
 }
