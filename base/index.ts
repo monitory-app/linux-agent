@@ -6,7 +6,7 @@ export async function pushToMonitory() {
     console.debug(`Pushing informations to monitory.app at ${new Date().toISOString()}`);
 
     try {
-        const response = await fetch(`https://api.monitory.app/hosts/metrics/${token}`, {
+        const response = await fetch(`https://api.monitory.app/v1/hosts/metrics/${token}`, {
             method: "POST",
             body: JSON.stringify(result),
             headers: {
