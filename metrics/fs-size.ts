@@ -6,6 +6,6 @@ export async function fsSizeInfo() {
 
     console.debug('fileSize', mount);
     return {
-        fsSize: mount ?? null
+        fs: mount ?? null
     };
 }

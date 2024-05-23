@@ -6,15 +6,13 @@ import {fsSizeInfo} from "./fs-size.ts";
 import {processesInfo} from "./processes.ts";
 
 export async function getAllMetrics() {
-    // debug
-    await fsSizeInfo();
-
     const raw = await Promise.allSettled([
         baseInfo(),
         aptUpdates(),
         dockerInfo(),
         rebootInfo(),
         processesInfo(),
+        fsSizeInfo(),
     ]);
 
     return raw.flatMap((value: any) => value.value).reduce((acc, obj) => {
