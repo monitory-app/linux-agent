@@ -32,7 +32,6 @@ apt install -y curl wget git unzip >/dev/null 2>&1
 
 curl -fsSL https://bun.sh/install | bash
 source /root/.bashrc
-bun --version
 
 echo -e "--------------------------------------------------------------------------------"
 echo "Download agent..."
