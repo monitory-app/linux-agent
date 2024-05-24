@@ -7,6 +7,8 @@ export async function baseInfo() {
     const time = si.time();
     const memory = await si.mem();
 
+    console.debug('server time', time.current);
+
     return {
         platform: os.platform,
         distro: os.distro,
