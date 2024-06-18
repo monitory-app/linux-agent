@@ -31,7 +31,14 @@ apt update -y >/dev/null 2>&1
 apt install -y curl wget git unzip >/dev/null 2>&1
 
 curl -fsSL https://bun.sh/install | bash
+
+# Manuelles Setzen der Pfade
+export BUN_INSTALL="/root/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 source /root/.bashrc
+
+bun --version
 
 echo -e "--------------------------------------------------------------------------------"
 echo "Download agent..."
